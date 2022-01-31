@@ -1,0 +1,33 @@
+<aura:component controller="ShivaAccDetailsCtrl" implements="force:hasRecordId,flexipage:availableForAllPageTypes" access="global">
+    
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="recordId" type="id"/>
+    <aura:attribute name="responseval" type="Object" default=""/>
+    <aura:attribute name="title" type="String" default="Shiva Account details"/>
+    <lightning:card>
+        <aura:set attribute="title">
+            <lightning:icon iconName="utility:connected_apps" size="small"/>
+            {! v.title }
+        </aura:set>
+        <aura:set attribute="footer">
+           <lightning:button variant="brand" label="Send to Shiva" title="Sent to Shiva" onclick="{! c.handleClick }" />
+
+            
+        </aura:set>
+        Name: {!v.responseval.Name}<br/>
+        Phone: {!v.responseval.Phone}<br/>
+        Website: {!v.responseval.Website}<br/>
+        BillingAddress: 
+        <lightning:formattedAddress
+            street="{!v.responseval.BillingStreet}"
+            city="{!v.responseval.BillingCity}"
+            country="{!v.responseval.BillingCountry}"
+            
+            postalCode="{!v.responseval.BillingPostalCode}"
+        />
+         
+        
+    </lightning:card>
+
+
+</aura:component>

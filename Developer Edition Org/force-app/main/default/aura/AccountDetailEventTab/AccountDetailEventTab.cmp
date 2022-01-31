@@ -1,0 +1,18 @@
+<aura:component >
+    <aura:handler event="c:AllAccountsToAccountDetail" action="{!c.handleDetailView}"/>
+ 	<aura:attribute name="EventSentAccId" type="String" />
+	<lightning:card >
+        <aura:set attribute="actions">
+            <lightning:button label="New"/>
+        </aura:set>
+        <aura:set attribute="title">
+            <lightning:tile label="Account Details" >
+                <aura:set attribute="media">
+                    <lightning:icon iconName="standard:person_account"/>
+                </aura:set>
+            </lightning:tile>
+        </aura:set>
+        <!--card body goes here-->
+        <force:recordView recordId="{!v.EventSentAccId}" type="FULL"/>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,78 @@
+<aura:component >
+    <!-- Required Attribute -->
+    <aura:attribute required="true" name="con" type="contact"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="title" type="String" default=""/>
+    <aura:attribute name="buttonstate" type="Boolean" default="false"/>
+    <aura:attribute name="mapMarkers" type="Object"/>
+    <aura:attribute name="zoomLevel" type="Integer" />
+
+    
+   
+        
+        <div class="slds-p-around_x-small">
+            <lightning:card>
+            	<!--     CARD Header    -->
+                <aura:set attribute="title">
+                    <lightning:icon iconName="standard:client" size="large"/>
+                    <span class="slds-m-left_x-small">{!v.con.Name}</span>
+                </aura:set>
+                <!--     CARD BODY    -->
+                <div class="slds-p-around_small">
+                    
+                    <lightning:layout>
+                        <lightning:layoutItem size="8">  
+                            
+                            <lightning:layout>
+                                <lightning:layoutItem size="6">
+                                    <div class="header-column ">
+                                        <p class="field-title slds-text-title_bold" title="Contact Name">Contact Name</p>
+                                        <p>{!v.con.Name}</p>
+                                    </div><br/>
+                                    <div class="header-column ">
+                                        <p class="field-title slds-text-title_bold" title="Contact Title">Contact Title</p>
+                                        <p>{!v.con.Title}</p>
+                                    </div>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="6">
+                                    <div class="header-column ">
+                                        <p class="field-title slds-text-title_bold" title="Contact Phone">Contact Phone</p>
+                                        <p>{!v.con.Phone}</p>
+                                    </div>
+                                </lightning:layoutItem>
+                                
+                            </lightning:layout>
+                        </lightning:layoutItem>
+                        
+                        <lightning:layoutItem size="4">          
+                            <aura:if isTrue="{!v.mapMarkers.length > 0}" >
+                                <lightning:map  mapMarkers="{! v.mapMarkers }"   zoomLevel="{!v.zoomLevel}" />
+                            </aura:if>
+                        </lightning:layoutItem>
+                        
+                        
+                    </lightning:layout>
+                </div>
+                
+                <!--     CARD Footer   -->
+                <aura:set attribute="footer">
+                    <lightning:buttonStateful
+                        labelWhenOff="Show more"
+                        labelWhenOn="Show less"
+                        variant="text"
+                        iconNameWhenOff="utility:chevrondown"
+                        iconNameWhenOn="utility:chevronup"
+                 
+                        state="{! v.buttonstate }"
+                        onclick="{! c.handleClick }"
+                    />
+                </aura:set>
+            </lightning:card>
+            
+        </div>
+        
+    
+    
+    
+</aura:component>

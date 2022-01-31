@@ -1,0 +1,42 @@
+<aura:component controller="AccountListEventTabCtrl">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:registerEvent name="AccountId" type="c:AllAccountsToAccountDetail"/>
+    <aura:attribute name="AllAccList" type="String" />
+
+	<lightning:card>
+        <aura:set attribute="actions">
+            <lightning:button label="New"/>
+        </aura:set>
+        <aura:set attribute="title">
+            <lightning:tile label="All Accounts" >
+                <aura:set attribute="media">
+                    <lightning:icon iconName="standard:groups"/>
+                </aura:set>
+            </lightning:tile>
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+            Card Body (custom component)
+        </p>
+        <table class="slds-table slds-table--bordered slds-table--striped" style="margin-top:30px;">
+                
+            <tbody>
+                <tr>
+                    <th><b>Account Name</b></th>
+                    <th><b>Phone</b></th>
+                    <th><b>Actions</b></th>
+                </tr>
+                <aura:iteration items="{!v.AllAccList}" var="acc" indexVar="indexAcc">
+                    <tr> 
+                        <td>{!acc.Name} </td>
+                        <td>{!acc.Phone}</td> 
+                        <td><lightning:button name="{!acc.Id}" label="View Details" onclick="{! c.handleClick }"/></td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+            
+        </table>
+            
+        
+        
+    </lightning:card>
+</aura:component>

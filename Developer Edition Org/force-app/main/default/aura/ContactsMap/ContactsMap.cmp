@@ -1,0 +1,75 @@
+<aura:component controller="ContactsMapCtrl" implements="flexipage:availableForAllPageTypes,force:hasRecordId" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	<aura:attribute name="recordId" type="String" />
+	<aura:attribute name="mapMarkers" type="Object[]"/>
+    <aura:attribute name="modalopen" type="boolean" default= "false"/>
+    
+    <div class="slds-m-around_xx-large">
+    	<aura:if isTrue="{!v.modalopen}">
+            
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            	
+                <!--  Modal Start -->
+                <div class="slds-modal__container">
+                    <!-- Header -->
+                    
+                    <header class="slds-modal__header">
+                        
+                        <lightning:buttonIcon iconName="utility:close"  
+                                              variant="bare-inverse" 
+                                              alternativeText="Close modal"
+                                              class="slds-modal__close"
+                                              onclick="{! c.closemodal }"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">About Modal</h2>
+                    </header>
+                    
+                    
+                    <!-- Body -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p>
+                    
+                    this is a test modal 
+                    
+                    </p> 
+                    </div>    
+                    
+                    
+                    
+                    <!-- Footer -->
+                    <footer class="slds-modal__footer">
+                        
+                        <lightning:button variant="brand" label="OK" title="OK" onclick="{! c.closemodal }" />
+
+                        
+                        
+                        
+                    </footer>    
+                    
+                    
+                </div>
+                
+                
+            </section>
+            
+        </aura:if>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+    
+    <aura:if isTrue="{!v.mapMarkers.length > 0}" >
+        <!-- the map component -->
+        <lightning:map mapMarkers="{! v.mapMarkers }"/>
+    </aura:if>
+    
+    
+</aura:component>

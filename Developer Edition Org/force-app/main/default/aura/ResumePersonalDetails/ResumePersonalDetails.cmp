@@ -1,0 +1,61 @@
+<aura:component controller="ResumePersonalDetailsCtrl" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="usr" type="User" default=""/>
+    
+    <lightning:card>
+        <aura:set attribute="footer">
+        		<div >
+                    <lightning:layout horizontalAlign="spread">
+                        <lightning:layoutItem  padding="around-small">
+                            <lightning:icon iconName="utility:call" alternativeText="Call" title="Call" size="x-small" />
+                            <lightning:formattedPhone value="{!v.usr.Phone}"></lightning:formattedPhone>
+                        </lightning:layoutItem> 
+                        <lightning:layoutItem   padding="around-small">
+                            <lightning:icon iconName="utility:email" alternativeText="Email" title="Email" size="x-small" />
+                            <lightning:formattedEmail value="{!v.usr.Email}" hideIcon="true" />
+                        </lightning:layoutItem>
+                        <lightning:layoutItem  padding="around-small">
+                            <p title="Work Authorization">Work Authorization : {!v.usr.WorkAuthorization__c}</p>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem  padding="around-small">
+                            <lightning:icon iconName="utility:email" alternativeText="Email" title="Email" size="x-small" />
+                            Miami, FL
+                        </lightning:layoutItem>
+                        <lightning:layoutItem  padding="around-small">
+                            <lightning:formattedEmail value="https://www.linkedin.com/in/vaishnavi-bachu-60b83080/" hideIcon="true" />
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </div>
+    </aura:set>
+        <lightning:layout>
+            <lightning:layoutItem  size="1" padding="around-small">
+                <p class="field-title slds-text-title_bold" />
+                <img class="profilePic" src="{!$Resource.ProfilePic}" width="80" height="80"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem  size="10" padding="around-small">
+                <div >
+                    <h1 style="color:red; font-size:160%;"><b>Vaishnavi Bachu</b></h1> 
+                    <p>I am Vaishnavi Bachu, I am a passionate salesforce developer. I build enterprise applications in Salesforce and love to automate things</p>
+                </div>
+           </lightning:layoutItem>
+        </lightning:layout>
+    </lightning:card>
+    <div style= "width:300px; height:100px;">
+ <lightning:carousel disableAutoRefresh="false" disableAutoScroll="false">
+        <lightning:carouselImage
+             src = "{!$Resource.AdminCertified}"            
+            header = "Certified Administrator">
+    </lightning:carouselImage>
+     <lightning:carouselImage
+             src = "{!$Resource.PlatformDeveloper1}" 
+            header = "Certified Platform Developer 1">
+        </lightning:carouselImage>
+        <lightning:carouselImage
+            header = "Verification email"
+            description = "{!v.usr.Email}">
+        </lightning:carouselImage>
+    </lightning:carousel> 
+    </div>
+    
+  
+</aura:component>

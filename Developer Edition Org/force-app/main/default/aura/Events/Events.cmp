@@ -1,0 +1,19 @@
+<aura:component implements="force:appHostable" >
+	
+    
+    
+    <div class="c-container">
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="7" padding="around-small">
+                <c:AccountListEventTab></c:AccountListEventTab>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="5" padding="around-small">
+                <c:AccountDetailEventTab/>
+            </lightning:layoutItem>
+            
+        </lightning:layout>
+    </div>
+    
+    
+    
+</aura:component>

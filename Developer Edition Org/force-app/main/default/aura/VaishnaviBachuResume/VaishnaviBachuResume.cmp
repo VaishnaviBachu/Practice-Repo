@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable" >
+	this is just to test
+    <c:ResumePersonalDetails/>
+</aura:component>

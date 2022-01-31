@@ -1,0 +1,28 @@
+<aura:component controller="CustomCardWithSearchBarCtrl" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="conList" type="Contact[]" default=""/>
+    
+    <div class="container slds-p-around_x-large">
+        
+        <div class="slds-p-around_x-small">
+            <lightning:layout verticalAlign ="end" horizontalAlign="">
+                <lightning:layoutItem size="10" >          
+                    <lightning:input name="input1" label="Enter the text here" onfocus="{! c.handleFocus }" onblur="{! c.handleBlur }" />
+                </lightning:layoutItem>
+                
+                <lightning:layoutItem size="2" padding="horizontal-medium">
+                    <lightning:button label="Search" title="search" onclick="{! c.handleClick }"/>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    
+        <aura:iteration items="{!v.conList}" var="conItem">
+            <c:ContactCard con="{!conItem}"/>
+        
+        </aura:iteration>
+    
+    
+	</div>    
+    
+    
+</aura:component>

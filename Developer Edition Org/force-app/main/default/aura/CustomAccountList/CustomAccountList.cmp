@@ -1,0 +1,71 @@
+<aura:component controller="CustomAccountListCtrl" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="Cardtitle" type="String" default="Account Name is the Title"/>
+    <aura:attribute name="acc" type="Account" default=""/>
+
+    
+    <div class="c-container">
+        <lightning:layout verticalAlign ="end" horizontalAlign="">
+            
+            <lightning:layoutItem size="10" padding="horizontal-small">
+                <lightning:input name="input3" placeholder="type here..."/>
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem size="2">
+                <lightning:button variant="brand" label="Search" title="Brand action"  />
+            </lightning:layoutItem>
+            
+                        
+        </lightning:layout>
+    
+        
+        	
+
+        <div class="slds-p-around_large"> 
+       		<lightning:card >
+                <aura:set attribute="title">
+                    <lightning:tile  label="{!v.acc.Name}" href="/bruce.html">
+                        <aura:set attribute="media">
+                            <lightning:avatar src="/docs/component-library/app/images/examples/avatar1.jpg" fallbackIconName="standard:person_account" alternativeText="Lexee L. Jackson"/>
+                        </aura:set>
+                        <ul class="slds-list_horizontal slds-has-dividers_right">
+                            <li class="slds-item">
+                            	{!v.acc.AccountNumber}                          
+                            </li>
+                            
+                        </ul>
+            		</lightning:tile>
+                </aura:set>
+                <aura:set attribute="footer">
+                    <lightning:badge label="Show More"/>
+                    
+                </aura:set>
+                <div class="slds-p-around_large ">              	
+                            
+                            <div class="header-column ">
+                            	<p class="field-title slds-text-title_bold" title="Account Number">Account Number</p>
+                                <p>{!v.acc.AccountNumber}</p>
+                            </div>
+                        
+                    		<br/>
+                        	
+                            
+                            <div class="header-column ">
+                            	<p class="field-title slds-text-title_bold" title="Account Name">Account Name</p>
+                                <p>Bruce Wayne</p>
+                            </div>
+
+                        
+                    
+                </div>
+           </lightning:card>
+        </div>
+            
+            
+    </div>
+ 
+         
+         
+    
+
+</aura:component>
